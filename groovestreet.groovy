@@ -40,7 +40,7 @@ pipeline {
                     ]) {
 
                         sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t sfc_nginx"
-                        sh "echo '${password}' | sudo -S docker run -d -p 2703:80 --name sfc_nginx -v /home/adminci/is_mount_dir:/stat sfc_nginx"
+                        sh "echo '${password}' | sudo -S docker run -d -p 1627:80 --name sfc_nginx -v /home/adminci/is_mount_dir:/stat sfc_nginx"
                     }
                 }
             }
