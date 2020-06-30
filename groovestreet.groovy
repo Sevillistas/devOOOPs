@@ -59,6 +59,22 @@ pipeline {
                 }
             }
         }
-        
+        stage ('Pit-Stop'){
+            steps{
+                script{
+                    withCredentials([
+                        usernamePassword(credentialsId: 'srv_sudo',
+                        usernameVariable: 'username',
+                        passwordVariable: 'password')
+                    ]) {
+                        try{
+                            sh "echo '${password}' | sudo -S docker stop sfc_nginx"
+                        } catch (Exception e){
+                            print 'my condolences'
+                        }
+                    }
+                }
+            }
+        }
     }   
 }
